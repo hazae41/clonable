@@ -11,11 +11,11 @@ export interface Copiable<N extends number = number> {
 export class Copied<N extends number = number> implements Copiable<N> {
   readonly #class = Copied
 
-  private constructor(
+  constructor(
     readonly bytes: Uint8Array<N>,
   ) { }
 
-  static from<N extends number>(bytes: Uint8Array<N>): Copied<N> {
+  static copy<N extends number>(bytes: Uint8Array<N>): Copied<N> {
     return new Copied(bytes.slice() as Uint8Array<N>)
   }
 
@@ -41,7 +41,7 @@ export class Uncopied<N extends number = number> implements Copiable<N> {
   }
 
   copy() {
-    return Copied.from(this.bytes)
+    return Copied.copy(this.bytes)
   }
 
 }
