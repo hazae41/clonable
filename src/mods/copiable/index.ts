@@ -41,7 +41,7 @@ export class Uncopied<N extends number = number> implements Copiable<N> {
   }
 
   copy() {
-    return new Copied(this.bytes.slice() as Uint8Array<N>)
+    return new Copied(new Uint8Array(this.bytes) as Uint8Array<N>)
   }
 
 }
