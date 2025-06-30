@@ -10,6 +10,16 @@ export interface Copiable<N extends number = number> {
 
 }
 
+export interface Copied<N extends number = number> extends Copiable<N> {
+
+  readonly copied: true
+
+  get(): Uint8Array<N>
+
+  copy(): Copied<N>
+
+}
+
 export class Copied<N extends number = number> implements Copiable<N> {
 
   readonly copied = true
@@ -25,6 +35,16 @@ export class Copied<N extends number = number> implements Copiable<N> {
   copy() {
     return this
   }
+
+}
+
+export interface Uncopied<N extends number = number> extends Copiable<N> {
+
+  readonly copied: false
+
+  get(): Uint8Array<N>
+
+  copy(): Copied<N>
 
 }
 
