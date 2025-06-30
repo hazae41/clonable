@@ -2,6 +2,8 @@ import { Uint8Array } from "libs/bytes/index.js"
 
 export interface Copiable<N extends number = number> {
 
+  readonly copied: boolean
+
   get(): Uint8Array<N>
 
   copy(): Copied<N>
@@ -9,7 +11,8 @@ export interface Copiable<N extends number = number> {
 }
 
 export class Copied<N extends number = number> implements Copiable<N> {
-  readonly #class = Copied
+
+  readonly copied = true
 
   constructor(
     readonly bytes: Uint8Array<N>,
@@ -30,7 +33,8 @@ export class Copied<N extends number = number> implements Copiable<N> {
 }
 
 export class Uncopied<N extends number = number> implements Copiable<N> {
-  readonly #class = Uncopied
+
+  readonly copied = false
 
   constructor(
     readonly bytes: Uint8Array<N>,
