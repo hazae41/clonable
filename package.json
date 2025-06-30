@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@hazae41/uncopy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Zero-copy bytes",
   "homepage": "https://github.com/hazae41/uncopy",
   "repository": "github:hazae41/uncopy",
