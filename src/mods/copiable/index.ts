@@ -1,8 +1,8 @@
 import { Uint8Array } from "libs/bytes/index.js"
 
-export interface Copiable {
+export interface Clonable {
 
-  copyOrThrow(): this
+  cloneOrThrow(): this
 
 }
 
@@ -13,7 +13,7 @@ export class Slice<N extends number = number> {
     readonly bytes: Uint8Array<N>
   ) { }
 
-  copyOrThrow() {
+  cloneOrThrow() {
     return new Slice(new Uint8Array(this.bytes) as Uint8Array<N>)
   }
 
