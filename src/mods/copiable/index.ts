@@ -1,67 +1,20 @@
 import { Uint8Array } from "libs/bytes/index.js"
 
-export interface Copiable<N extends number = number> {
+export interface Copiable {
 
-  readonly copied: boolean
-
-  get(): Uint8Array<N>
-
-  copy(): Copied<N>
+  copyOrThrow(): this
 
 }
 
-export interface Copied<N extends number = number> extends Copiable<N> {
 
-  readonly copied: true
-
-  get(): Uint8Array<N>
-
-  copy(): Copied<N>
-
-}
-
-export class Copied<N extends number = number> implements Copiable<N> {
-
-  readonly copied = true
+export class Slice<N extends number = number> {
 
   constructor(
-    readonly bytes: Uint8Array<N>,
+    readonly bytes: Uint8Array<N>
   ) { }
 
-  get() {
-    return this.bytes
-  }
-
-  copy() {
-    return this
-  }
-
-}
-
-export interface Uncopied<N extends number = number> extends Copiable<N> {
-
-  readonly copied: false
-
-  get(): Uint8Array<N>
-
-  copy(): Copied<N>
-
-}
-
-export class Uncopied<N extends number = number> implements Copiable<N> {
-
-  readonly copied = false
-
-  constructor(
-    readonly bytes: Uint8Array<N>,
-  ) { }
-
-  get() {
-    return this.bytes
-  }
-
-  copy() {
-    return new Copied(new Uint8Array(this.bytes) as Uint8Array<N>)
+  copyOrThrow() {
+    return new Slice(new Uint8Array(this.bytes) as Uint8Array<N>)
   }
 
 }
