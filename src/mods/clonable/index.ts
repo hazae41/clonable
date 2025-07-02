@@ -1,4 +1,4 @@
-import { Lengthed } from "mods/lengthed/index.js"
+import { Lengthed } from "@hazae41/lengthed"
 
 export interface Clonable {
 
