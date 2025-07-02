@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@hazae41/clonable",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Rust-like clone for TypeScript",
   "homepage": "https://github.com/hazae41/clonable",
   "repository": "github:hazae41/clonable",
