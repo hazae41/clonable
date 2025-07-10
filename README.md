@@ -1,12 +1,12 @@
-# Clonable
+# Memory
 
-Rust-like clone for TypeScript
+Zero-copy WebAssembly bytes for TypeScript
 
 ```bash
-npm i @hazae41/clonable
+npm i @hazae41/memory
 ```
 
-[**Node Package 📦**](https://www.npmjs.com/package/@hazae41/clonable)
+[**Node Package 📦**](https://www.npmjs.com/package/@hazae41/memory)
 
 ## Features
 - 100% TypeScript and ESM
@@ -15,17 +15,23 @@ npm i @hazae41/clonable
 ## Usage
  
 ```tsx
-import { Clonable, Slice } from "@hazae41/clonable"
+import { Memory, Slice } from "@hazae41/memory"
 
-class Struct implements Clonable {
+function f(memory: Memory) {
+  // Consume memory
+  using _  = memory
 
-  constructor(
-    readonly slice: Slice
-  ) {}
-
-  cloneOrThrow(): this {
-    return new Struct(this.slice.cloneOrThrow())
-  }
-
+  // Use raw bytes
+  g(memory.bytes)
 }
+
+function g(bytes: Uint8Array) {
+  console.log(bytes)
+}
+
+// Use with JavaScript bytes
+f(new Slice(new Uint8Array([1,2,3])))
+
+// Use with WebAssembly bytes
+f(MyModule.somethingThatReturnsBytes())
 ```
