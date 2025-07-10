@@ -1,19 +1,18 @@
-import { Lengthed } from "@hazae41/lengthed"
 
-export interface Clonable {
+export interface Memory {
 
-  cloneOrThrow(): this
+  [Symbol.dispose](): void
+
+  readonly bytes: Uint8Array
 
 }
 
-export class Slice<N extends number = number> {
+export class Slice {
 
   constructor(
-    readonly bytes: Uint8Array & Lengthed<N>
+    readonly bytes: Uint8Array
   ) { }
 
-  cloneOrThrow() {
-    return new Slice(new Uint8Array(this.bytes) as Uint8Array & Lengthed<N>)
-  }
+  [Symbol.dispose]() { }
 
 }
