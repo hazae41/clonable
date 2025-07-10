@@ -1,6 +1,6 @@
 # Memory
 
-Zero-copy WebAssembly bytes for TypeScript
+Disposable bytes for TypeScript & WebAssembly
 
 ```bash
 npm i @hazae41/memory
