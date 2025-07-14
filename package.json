@@ -63,5 +63,8 @@
     "esmodules",
     "tested",
     "unit-tested"
-  ]
+  ],
+  "dependencies": {
+    "@hazae41/lengthed": "^1.0.1"
+  }
 }
