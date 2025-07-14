@@ -1,5 +1,9 @@
 import { Lengthed } from "@hazae41/lengthed"
 
+export type BytesOrMemory<N extends number = number> =
+  | Uint8Array & Lengthed<N>
+  | Memory<N>
+
 export interface Memory<N extends number = number> {
 
   [Symbol.dispose](): void
